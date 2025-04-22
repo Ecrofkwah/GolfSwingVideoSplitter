@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .server.views import splitVideoBySwings, mirrorResponse
+#from rest_framework import routers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('check_video', include('rest_framework'))
+    path('split-video/', splitVideoBySwings),
+    path('mirror/', mirrorResponse)
 ]

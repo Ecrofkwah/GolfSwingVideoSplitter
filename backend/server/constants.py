@@ -1,0 +1,9 @@
+ROBOFLOW_API_URL="https://detect.roboflow.com"
+# ROBOFLOW_MODEL_ID="golf-fmo/8"
+ROBOFLOW_MODEL_ID="golf-49wbh/1"
+
+SECONDS_SURROUNDING = 2
+
+FPS=30
+
+BALL_HIT_MOVEMENT_THRESHOLD = 0.1
