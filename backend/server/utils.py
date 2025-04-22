@@ -103,7 +103,10 @@ def get_fps(path):
     cam = cv2.VideoCapture(path)
     return cam.get(cv2.CAP_PROP_FPS)
 
-def clip_video(path: str, start_time: float, end_time: float, index: str):
+def clip_video(path: str, start_time: float, end_time: float, index: str, output_dir: str):
     clip = VideoFileClip(path)
-    subclip = clip.subclip(start_time, end_time)
-    subclip.write_videofile(os.path.join(path, index))
+    subclip = clip.subclipped(start_time, end_time)
+
+    os.makedirs(output_dir, exist_ok=True)
+
+    subclip.write_videofile(os.path.join(output_dir, str(index) + ".mp4"), codec="libx264")

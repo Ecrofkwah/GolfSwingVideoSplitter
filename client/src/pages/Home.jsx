@@ -4,6 +4,7 @@ import axios from 'axios';
 
 function Home() {
     const [fileUploaded, setFileUploaded] = useState(null);
+    const [videoUrls, setVideoUrls] = useState([])
 
     function handleDrop(event) {
         event.preventDefault();
@@ -44,6 +45,7 @@ function Home() {
                 }
             });
             console.log(results.data);
+            setVideoUrls(results.data.urls)
         }
         catch (error) {
             console.log(error);
@@ -57,6 +59,12 @@ function Home() {
                 <input className='upload' id='upload' type="file" onChange={handleFileSelect} /> {/*accept="image/png, image/jpeg"*/}
             </div>
             <button className='split' onClick={splitVideo}> Split the video!</button>
+            {videoUrls.map((url, i) =>
+                <video width="640" height="360" controls>
+                    <source src={url} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            )}
         </div >
     )
 }
